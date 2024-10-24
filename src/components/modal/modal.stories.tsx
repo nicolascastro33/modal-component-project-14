@@ -1,22 +1,27 @@
-import { StoryFn, Meta } from "@storybook/react";
-import Modal from "./modal";
-import defaultStyle from "./style.stories";
+import { StoryFn, Meta } from '@storybook/react'
+import Modal from './modal'
+import defaultStyle from './style.stories'
+import closeButtonImg from './assets/delete.png'
 
 export default {
-  title: "ReactComponentLibrary/Rating",
+  title: 'ReactComponentLibrary/Rating',
   component: Modal,
-} as Meta<typeof Modal>;
+} as Meta<typeof Modal>
 
-const Template: StoryFn<typeof Modal> = (args) => <Modal {...args} />;
+const Template: StoryFn<typeof Modal> = (args) => <Modal {...args} />
 
+export const RatingTestWithImage = Template.bind({})
+RatingTestWithImage.args = {
+  message: 'Rating Test With Image',
+  modalCloseButtonImg: closeButtonImg,
+}
 
-export const RatingTest = Template.bind({});
-RatingTest.args = {
-    message: 'Test Message',
-    style: {...defaultStyle, modalCloseButton: {position: "absolute", top: '10px'}}
-};
+export const RatingWithNewStyle= Template.bind({})
+RatingWithNewStyle.args = {
+  message: "Rating With New Style injected",
+}
 
-export const RatingSecondary = Template.bind({});
-RatingSecondary.args = {
-    message:"You're connected",
-};
+export const RatingByDefault = Template.bind({})
+RatingByDefault.args = {
+  message: "Rating By Default",
+}

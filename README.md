@@ -1,6 +1,6 @@
 ## Modal Component
 
-A customizable and reusable modal component for React applications. Perfect for confirming actions like employee deletion or any other action requiring user confirmation. This component can be easily integrated into any React app and styled according to your design requirements.
+This versatile React modal component is perfect for confirming actions like employee deletion or any other action requiring user confirmation. Easily integrate it into your app and customize the styling to match your design.
 
 ## Installation
 
@@ -29,40 +29,40 @@ Here's a basic example of how to use the `Modal` component in your project:
 ```jsx
 import React, { useState } from 'react';
 import Modal from 'modal-component-ocr-finalproject';
+import closeButtonImage from "./closeButtonImage"
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
-
-  const primaryAction = () => {
-    console.log('Primary action executed!');
-    handleClose();
-  };
-
-  const secondaryAction = () => {
-    console.log('Secondary action executed!');
-    handleClose();
-  };
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   return (
     <div>
       <button onClick={handleOpen}>Open Modal</button>
-      <Modal
-        isOpen={isOpen}
-        title="Delete Employee"
-        text="Are you sure you want to delete this employee?"
-        onClose={handleClose}
-        primaryButton={{ label: 'Delete', onClick: primaryAction, style: { backgroundColor: "#F5F9CE", color: "#000" } }}
-        secondaryButton={{ label: 'Cancel', onClick: secondaryAction, style: { backgroundColor: "#ccc", color: "#000" } }}
+      {isModalOpen &&
+        <Modal
+        setIsModalOpen={setIsModalOpen}
+        message="You're account has been created!"
+        closeButtonImage={closeButtonImage}
         style={{
-          backgroundColor: '#f9f9f9',
-          color: '#333',
-          padding: '30px',
-          borderRadius: '8px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          overlayModal: {
+            backgroundColor: "#333333d3",
+          }
+          modalContainer:{
+            width: "100vw",
+            height: "100vh",
+            overflowY: "hidden",
+            zIndex: "10",
+          }
+          modalCloseButton: {
+            width: "30px",
+            height: "30px",
+            cursor: "pointer",
+          }
+          modal:{
+            backgroundColor: "white",
+            borderRadius: "10px 0 10px 10px",
+          }
         }}
+      }
       />
     </div>
   );
@@ -73,21 +73,48 @@ export default App;
 
 ## Props
 
-| Prop              | Type     | Description                                                                                                                                      | Required | Default           |
-|-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| `isOpen`          | `bool`   | Determines if the modal is open or closed.                                                                                                       | Yes      | `false`           |
-| `title`           | `string` | The title of the modal.                                                                                                                          | No       | `null`            |
-| `text`            | `string` | The main text or content inside the modal.                                                                                                       | Yes      | N/A               |
-| `onClose`         | `func`   | Callback function triggered when the modal is closed (either by clicking outside or pressing the escape key).                                     | Yes      | N/A               |
-| `primaryButton`   | `object` | Object containing the label, onClick handler, and optional styles for the primary button.                                                         | No       | `null`            |
-| `primaryButton.label`   | `string` | The text to display on the primary button.                                                                                                        | Yes      | N/A               |
-| `primaryButton.onClick` | `func`   | The function to call when the primary button is clicked.                                                                                          | Yes      | N/A               |
-| `primaryButton.style` | `object` | Custom styles for the primary button, passed as an object of CSS properties.                                                                       | No       | `{}`              |
-| `secondaryButton` | `object` | Object containing the label, onClick handler, and optional styles for the secondary button.                                                       | No       | `null`            |
-| `secondaryButton.label` | `string` | The text to display on the secondary button.                                                                                                      | Yes      | N/A               |
-| `secondaryButton.onClick` | `func`   | The function to call when the secondary button is clicked.                                                                                        | Yes      | N/A               |
-| `secondaryButton.style` | `object` | Custom styles for the secondary button, passed as an object of CSS properties.                                                                     | No       | `{}`              |
-| `style`           | `object` | Custom styles for the modal, passed as an object of CSS properties.                                                                               | No       | `{}`              |
+| Prop                 | Type     | Description                                                                                                                                                            | Required | Default                  |
+| -------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------ |
+| `message`            | `string` | The message or content inside the modal.                                                                                                                               | Yes      | N/A                      |
+| `setIsModalOpen`     | `func`   | The set function from a useState hook that will turn your current state at false(either by clicking outside the modal or the close button or pressing the escape key). | Yes      | N/A                      |
+| `closeButtonImage`   | `string` | Link to the image you want for your close button.                                                                                                                      | false    | `N/A`                    |
+| `style`              | `object` | Custom global styles for the compoenent modal, passed as an object of CSS properties.                                                                                  | No       | `{}`                     |
+| `style.overlayModal` | `object` | Custom styles for the modal overlay, passed as an object of CSS properties.                                                                                            | No       | `{ position: "absolute", |
+
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#333333d3",}`    |
+
+| `style.modalContainer` | `object` | Custom styles for the container of the modal, passed as an object of CSS properties. | No | `{ position: "fixed",
+  top: "0",
+  width: "100vw",
+  height: "100vh",
+  overflowY: "hidden",
+  zIndex: "10",}` |
+
+| `style.modalCloseButton` | `object` | Custom styles for the close button modal, passed as an object of CSS properties. | No | `{  position: "absolute",
+    top: "-10px",
+    right: "-10px",
+    width: "30px",
+    height: "30px",
+    cursor: "pointer",
+    transition: "transform 0.5s",
+    transform: "scale(1)",
+    "&:hover": {
+      transform: "scale(1.2)",
+    }}` |
+| `style.modal` | `object` | Custom styles for the modal, passed as an object of CSS properties. | No | `{    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    borderRadius: "10px 0 10px 10px",
+    border: "1px solid black",
+    width: "70%",
+    display: "flex",
+    alignItems: "center",
+    padding: "15px",
+    zIndex: "10",}` |
 
 ## Example
 
@@ -119,20 +146,5 @@ export default App;
 
 - **Customizable**: Easily adjust colors, text, and styles via the `style` prop.
 - **Keyboard Support**: Close the modal by pressing the `Escape` key.
-- **Flexible**: Define actions for primary and secondary buttons.
 - **Responsive**: Adjusts well to different screen sizes.
 - **User-friendly**: Closes on clicking outside the modal.
-
-## Contribution
-
-Feel free to contribute to this project! You can find the repository on GitHub:
-
-[GitHub Repo](https://github.com/AurelieDuynslaeger/modal-component-demo--ocrfinalproject-npm)
-
-The Demo is [here](https://modal-component-demo.vercel.app/).
-
-If you encounter any issues or have suggestions, please submit an issue or a pull request. We value your feedback!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -1,5 +1,5 @@
 export type TModal = {
-    setIsModalOpened: React.Dispatch<React.SetStateAction<boolean>>
+    setIsModalOpened: React.Dispatch<React.SetStateAction<boolean>> 
     message: string
     modalCloseButtonImg?: string 
     style?: {
