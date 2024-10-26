@@ -24,9 +24,6 @@ export const modalContainer = {
     cursor: "pointer",
     transition: "transform 0.5s",
     transform: "scale(1)",
-    "&:hover": {
-      transform: "scale(1.2)",
-    }
   }
   
   export const modal = {
@@ -52,4 +49,3 @@ export const modalContainer = {
   }
 
   export default defaultStyle
-// export * as defaultStyle from './style.stories'

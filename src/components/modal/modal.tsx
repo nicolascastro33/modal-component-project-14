@@ -3,7 +3,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { TModal } from './modal.types'
 import defaultStyle from './style.stories'
 import { useOutsideClick } from '../../utils/use-outside-click'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Modal = ({
   setIsModalOpened,
@@ -43,6 +43,7 @@ const Modal = ({
         className="modal"
         ref={ref}
         style={style?.modal ?? defaultStyle.modal}
+
       >
         <h2>{message}</h2>
         {modalCloseButtonImg ? (

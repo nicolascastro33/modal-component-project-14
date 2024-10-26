@@ -62,8 +62,8 @@ const App = () => {
             borderRadius: "10px 0 10px 10px",
           }
         }}
-      }
       />
+      }
     </div>
   );
 };
@@ -79,12 +79,7 @@ export default App;
 | `setIsModalOpen`     | `func`   | The set function from a useState hook that will turn your current state at false(either by clicking outside the modal or the close button or pressing the escape key). | Yes      | N/A                      |
 | `closeButtonImage`   | `string` | Link to the image you want for your close button.                                                                                                                      | false    | `N/A`                    |
 | `style`              | `object` | Custom global styles for the compoenent modal, passed as an object of CSS properties.                                                                                  | No       | `{}`                     |
-| `style.overlayModal` | `object` | Custom styles for the modal overlay, passed as an object of CSS properties.                                                                                            | No       | `{ position: "absolute", |
-
-    height: "100%",
-    width: "100%",
-    backgroundColor: "#333333d3",}`    |
-
+| `style.overlayModal` | `object` | Custom styles for the modal overlay, passed as an object of CSS properties.                                                                                            | No       | `{ position: "absolute", height: "100%", width: "100%", backgroundColor: "#333333d3",}`    |
 | `style.modalContainer` | `object` | Custom styles for the container of the modal, passed as an object of CSS properties. | No | `{ position: "fixed",
   top: "0",
   width: "100vw",

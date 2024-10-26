@@ -1,7 +1,8 @@
 import { StoryFn, Meta } from '@storybook/react'
 import Modal from './modal'
-import defaultStyle from './style.stories'
+import defaultStyle, { modalCloseButton, overlayModal, modal } from './style.stories'
 import closeButtonImg from './assets/delete.png'
+import { transform } from '@babel/core'
 
 export default {
   title: 'ReactComponentLibrary/Rating',
@@ -16,12 +17,31 @@ RatingTestWithImage.args = {
   modalCloseButtonImg: closeButtonImg,
 }
 
-export const RatingWithNewStyle= Template.bind({})
+export const RatingWithNewStyle = Template.bind({})
 RatingWithNewStyle.args = {
-  message: "Rating With New Style injected",
+  message: 'Rating With New Style injected',
+  style: {
+    ...defaultStyle,
+    overlayModal: {
+      ...overlayModal,
+      backgroundColor: 'green',
+    },
+    modalCloseButton: {
+      ...modalCloseButton,
+    },
+    modal: {
+      ...modal,
+      backgroundColor: "yellow",
+      borderRadius :"none", 
+      cursor: "wait",
+      "&:hover":{
+        transform: "scale(2)",
+      },
+    },
+  },
 }
 
 export const RatingByDefault = Template.bind({})
 RatingByDefault.args = {
-  message: "Rating By Default",
+  message: 'Rating By Default',
 }
