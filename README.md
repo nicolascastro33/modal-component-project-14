@@ -79,63 +79,11 @@ export default App;
 | `setIsModalOpen`     | `func`   | The set function from a useState hook that will turn your current state at false(either by clicking outside the modal or the close button or pressing the escape key). | Yes      | N/A                      |
 | `closeButtonImage`   | `string` | Link to the image you want for your close button.                                                                                                                      | false    | `N/A`                    |
 | `style`              | `object` | Custom global styles for the compoenent modal, passed as an object of CSS properties.                                                                                  | No       | `{}`                     |
-| `style.overlayModal` | `object` | Custom styles for the modal overlay, passed as an object of CSS properties.                                                                                            | No       | `{ position: "absolute", height: "100%", width: "100%", backgroundColor: "#333333d3",}`    |
-| `style.modalContainer` | `object` | Custom styles for the container of the modal, passed as an object of CSS properties. | No | `{ position: "fixed",
-  top: "0",
-  width: "100vw",
-  height: "100vh",
-  overflowY: "hidden",
-  zIndex: "10",}` |
+| `style.overlayModal` | `object` | Custom styles for the modal overlay, passed as an object of CSS properties.                                                                                            | No       | `{  position: "absolute", height: "100%", width: "100%", backgroundColor: "#333333d3",}`    |
+| `style.modalContainer` | `object` | Custom styles for the container of the modal, passed as an object of CSS properties. | No |  `{ position: "fixed", top: "0", width: "100vw", height: "100vh", overflowY: "hidden", zIndex: "10",}`  |
+| `style.modalCloseButton` | `object` | Custom styles for the close button modal, passed as an object of CSS properties. | No | `{  position: "absolute", top: "-10px", right: "-10px", width: "30px", height: "30px", cursor: "pointer", transition: "transform 0.5s", transform: "scale(1)",}` |
+| `style.modal` | `object` | Custom styles for the modal, passed as an object of CSS properties. | No | `{    position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)", backgroundColor: "white", borderRadius: "10px 0 10px 10px", border: "1px solid black", width: "70%", display: "flex", alignItems: "center", padding: "15px", zIndex: "10",}` |
 
-| `style.modalCloseButton` | `object` | Custom styles for the close button modal, passed as an object of CSS properties. | No | `{  position: "absolute",
-    top: "-10px",
-    right: "-10px",
-    width: "30px",
-    height: "30px",
-    cursor: "pointer",
-    transition: "transform 0.5s",
-    transform: "scale(1)",
-    "&:hover": {
-      transform: "scale(1.2)",
-    }}` |
-| `style.modal` | `object` | Custom styles for the modal, passed as an object of CSS properties. | No | `{    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "white",
-    borderRadius: "10px 0 10px 10px",
-    border: "1px solid black",
-    width: "70%",
-    display: "flex",
-    alignItems: "center",
-    padding: "15px",
-    zIndex: "10",}` |
-
-## Example
-
-```jsx
-<Modal
-  isOpen={true}
-  title="Delete Confirmation"
-  text="Are you sure you want to delete this item?"
-  onClose={() => console.log('Modal closed')}
-  primaryButton={{
-    label: 'Confirm',
-    onClick: () => console.log('Item deleted!'),
-  }}
-  secondaryButton={{
-    label: 'Cancel',
-    onClick: () => console.log('Action cancelled'),
-  }}
-  style={{
-    backgroundColor: 'white',
-    color: 'black',
-    padding: '20px',
-    borderRadius: '10px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-  }}
-/>
-```
 
 ## Key Features
 
