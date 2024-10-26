@@ -2,7 +2,6 @@ import { StoryFn, Meta } from '@storybook/react'
 import Modal from './modal'
 import defaultStyle, { modalCloseButton, overlayModal, modal } from './style.stories'
 import closeButtonImg from './assets/delete.png'
-import { transform } from '@babel/core'
 
 export default {
   title: 'ReactComponentLibrary/Rating',
